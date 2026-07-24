@@ -1,0 +1,69 @@
+openapi: 3.1.0
+info:
+  title: Chainabuse Public Reports Sanctions API
+  version: '1.2'
+  description: The Chainabuse Public API lets partners contribute, retrieve, and look up community scam reports for blockchain addresses, tokens, transactions, and domains, and check whether an address appears on sanctions lists. Chainabuse is operated by TRM Labs. Documented at https://docs.trmlabs.com/guides/chainabuse/welcome-to-chainabuse-api.
+  contact:
+    name: Chainabuse
+    email: hello@chainabuse.com
+    url: https://www.chainabuse.com/
+  termsOfService: https://www.trmlabs.com/terms-of-service
+servers:
+- url: https://api.chainabuse.com/v0
+  description: Production
+security:
+- basicAuth: []
+tags:
+- name: Sanctions
+  description: Check whether an address is sanctioned.
+paths:
+  /sanctioned-addresses/{address}:
+    get:
+      operationId: CheckSanctionedAddress
+      summary: Check a sanctioned address
+      description: Check whether a blockchain address appears on sanctions lists.
+      tags:
+      - Sanctions
+      parameters:
+      - name: address
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The blockchain address to check.
+      responses:
+        '200':
+          description: Array of sanctioned-address records (empty if not sanctioned).
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SanctionedAddressPayload'
+        '404':
+          description: Not Found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        reason:
+          type: string
+    SanctionedAddressPayload:
+      type: object
+      properties:
+        label:
+          type: string
+        chain:
+          type: string
+        address:
+          type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Credentials are generated from your Chainabuse user profile.

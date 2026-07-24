@@ -1,0 +1,84 @@
+openapi: 3.1.0
+info:
+  title: Chainabuse Public Reports Sanctions Screening API
+  version: '1.2'
+  description: The Chainabuse Public API lets partners contribute, retrieve, and look up community scam reports for blockchain addresses, tokens, transactions, and domains, and check whether an address appears on sanctions lists. Chainabuse is operated by TRM Labs. Documented at https://docs.trmlabs.com/guides/chainabuse/welcome-to-chainabuse-api.
+  contact:
+    name: Chainabuse
+    email: hello@chainabuse.com
+    url: https://www.chainabuse.com/
+  termsOfService: https://www.trmlabs.com/terms-of-service
+servers:
+- url: https://api.chainabuse.com/v0
+  description: Production
+security:
+- basicAuth: []
+tags:
+- name: Sanctions Screening
+paths:
+  /public/v1/sanctions/screening:
+    post:
+      operationId: PublicV1SanctionsScreeningPost
+      summary: Submit one or more addresses to be screened
+      description: Returns whether each address provided has sanctions exposure. By default the API is limited to 1 req/sec and a maximum of 100 req/day. API-key holders receive higher limits.
+      tags:
+      - Sanctions Screening
+      security:
+      - basicAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ScreeningRequestItem'
+      responses:
+        '200':
+          description: Screening results, one per submitted address.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ScreeningResultItem'
+        '400':
+          description: Bad Request -- Your request is invalid.
+        '401':
+          description: Unauthorized -- Your API key is wrong.
+        '404':
+          description: Not Found -- The specified resource could not be found.
+        '405':
+          description: Method Not Allowed -- You tried to access an object with an invalid method.
+        '406':
+          description: Not Acceptable -- You requested a format that isn't json.
+        '429':
+          description: Too Many Requests -- You have exceeded your rate limit.
+        '500':
+          description: Internal Server Error -- We had a problem with our server.
+        '503':
+          description: Service Unavailable -- We're temporarily offline for maintenance.
+components:
+  schemas:
+    ScreeningRequestItem:
+      type: object
+      required:
+      - address
+      properties:
+        address:
+          type: string
+          description: The blockchain address to screen.
+    ScreeningResultItem:
+      type: object
+      properties:
+        address:
+          type: string
+          description: The submitted address.
+        isSanctioned:
+          type: boolean
+          description: Whether the address has sanctions exposure.
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Credentials are generated from your Chainabuse user profile.
