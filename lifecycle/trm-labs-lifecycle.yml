@@ -1,0 +1,23 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.trmlabs.com/
+versioning:
+  scheme: uri-path
+  apis:
+    - api: Chainabuse Public API
+      current: v0
+      version_label: '1.2'
+    - api: TRM Sanctions API
+      current: v1
+      path_prefix: /public/v1
+      version_label: '1'
+  docs: https://docs.trmlabs.com/guides/chainabuse/welcome-to-chainabuse-api
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No public deprecation/sunset policy documented.
+sla:
+  url: null
+  uptime_target: null
+status_page: https://status.trmlabs.com
+deprecated_operations: []

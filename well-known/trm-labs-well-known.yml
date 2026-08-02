@@ -1,0 +1,32 @@
+generated: '2026-07-21'
+method: searched
+source: live probe of /.well-known/ across TRM Labs API + web hosts
+hosts:
+  - host: https://api.trmlabs.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: https://api.chainabuse.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+  - host: https://www.trmlabs.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+  - host: https://docs.trmlabs.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 302
+        note: Redirects; no raw security.txt served at the docs host.
+notes: >-
+  No .well-known discovery documents are published by TRM Labs at the probed
+  hosts. Absence is recorded as valid data.

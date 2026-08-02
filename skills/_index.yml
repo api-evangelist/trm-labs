@@ -1,0 +1,15 @@
+generated: '2026-07-21'
+method: generated
+source: >-
+  Grounded in operationIds from openapi/trm-labs-sanctions-openapi.yml and
+  openapi/trm-labs-chainabuse-openapi.yml. TRM Labs publishes its own agent-skill
+  guidance at https://docs.trmlabs.com/guides/resources/how-to.
+skills:
+  - file: trm-labs-screen-sanctions.md
+    name: Screen a blockchain address for sanctions exposure
+    api: openapi/trm-labs-sanctions-openapi.yml
+    operations: [PublicV1SanctionsScreeningPost, CheckSanctionedAddress]
+  - file: trm-labs-scam-reports.md
+    name: Look up and contribute Chainabuse scam reports
+    api: openapi/trm-labs-chainabuse-openapi.yml
+    operations: [GetReports, Report, CreateReports]

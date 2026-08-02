@@ -1,0 +1,18 @@
+{
+  "provider": "trm-labs",
+  "sources": [
+    "trm-labs-reports-api-openapi.yml",
+    "trm-labs-sanctions-api-openapi.yml",
+    "trm-labs-sanctions-screening-api-openapi.yml"
+  ],
+  "outputs": [
+    "trm-labs-reports-api-openapi.yml",
+    "trm-labs-sanctions-api-openapi.yml",
+    "trm-labs-sanctions-screening-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

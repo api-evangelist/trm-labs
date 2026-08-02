@@ -1,0 +1,338 @@
+openapi: 3.1.0
+info:
+  title: Chainabuse Public API
+  version: '1.2'
+  description: >-
+    The Chainabuse Public API lets partners contribute, retrieve, and look up
+    community scam reports for blockchain addresses, tokens, transactions, and
+    domains, and check whether an address appears on sanctions lists. Chainabuse
+    is operated by TRM Labs. Documented at
+    https://docs.trmlabs.com/guides/chainabuse/welcome-to-chainabuse-api.
+  contact:
+    name: Chainabuse
+    email: hello@chainabuse.com
+    url: https://www.chainabuse.com/
+  termsOfService: https://www.trmlabs.com/terms-of-service
+servers:
+  - url: https://api.chainabuse.com/v0
+    description: Production
+security:
+  - basicAuth: []
+tags:
+  - name: Reports
+    description: Contribute, retrieve, and look up scam reports.
+  - name: Sanctions
+    description: Check whether an address is sanctioned.
+paths:
+  /reports:
+    get:
+      operationId: GetReports
+      summary: Get reports
+      description: >-
+        Continuously check whether specific blockchain addresses (contracts or
+        wallets), token IDs, or URLs have been reported as malicious. Supports
+        filtering, pagination, and ordering.
+      tags:
+        - Reports
+      parameters:
+        - name: address
+          in: query
+          required: false
+          schema: { type: string }
+          description: Crypto address to screen.
+        - name: domain
+          in: query
+          required: false
+          schema: { type: string }
+          description: URL/domain to screen.
+        - name: chain
+          in: query
+          required: false
+          schema: { type: string }
+          description: ChainKind enum (BTC, ETH, TRON, SOL, ...).
+        - name: category
+          in: query
+          required: false
+          schema: { type: string }
+          description: ScamCategoryKind enum (RUG_PULL, PHISHING, ...).
+        - name: since
+          in: query
+          required: false
+          schema: { type: string, format: date-time }
+          description: Start date filter.
+        - name: before
+          in: query
+          required: false
+          schema: { type: string, format: date-time }
+          description: Threshold date filter.
+        - name: checked
+          in: query
+          required: false
+          schema: { type: boolean }
+          description: Only reports verified by moderators.
+        - name: trusted
+          in: query
+          required: false
+          schema: { type: boolean }
+          description: Only reports from trusted contributors.
+        - name: country
+          in: query
+          required: false
+          schema: { type: string }
+          description: ISO 3166-1 alpha-2 country code.
+        - name: minLossAmount
+          in: query
+          required: false
+          schema: { type: number }
+          description: Minimum loss amount (USD).
+        - name: scammerIoc
+          in: query
+          required: false
+          schema: { type: string }
+          description: Indicator-of-compromise filter.
+        - name: username
+          in: query
+          required: false
+          schema: { type: string }
+          description: Contributor username.
+        - name: page
+          in: query
+          required: false
+          schema: { type: number, default: 1 }
+          description: Page number.
+        - name: perPage
+          in: query
+          required: false
+          schema: { type: number, default: 50, maximum: 50 }
+          description: Reports per page (max 50).
+        - name: orderByField
+          in: query
+          required: false
+          schema: { type: string, enum: [CREATED_AT, SUBMITTED_BY] }
+        - name: orderByDirection
+          in: query
+          required: false
+          schema: { type: string, enum: [ASC, DESC] }
+        - name: includePrivate
+          in: query
+          required: false
+          schema: { type: boolean, default: false }
+          description: Include private reports (TRM_INTERNAL only).
+      responses:
+        '200':
+          description: A page of reports.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reports:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ReportPayload'
+                  count:
+                    type: number
+        '401':
+          description: Unauthorized -- Your API key is wrong.
+        '429':
+          description: Too Many Requests -- You have exceeded your rate limit.
+    post:
+      operationId: CreateReports
+      summary: Contribute reports
+      description: >-
+        Create reports in batch to report addresses and/or domains that are
+        malicious.
+      tags:
+        - Reports
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateReportsRequest'
+      responses:
+        '201':
+          description: Batch create result.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  createdReports:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id: { type: string }
+                  failedReports:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        error: { type: string }
+                        reportIndex: { type: number }
+        '403':
+          description: Forbidden.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Unprocessable Entity.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /reports/{reportId}:
+    get:
+      operationId: Report
+      summary: Get single report
+      description: Access a specific scam report using its ID number.
+      tags:
+        - Reports
+      parameters:
+        - name: reportId
+          in: path
+          required: true
+          schema: { type: string }
+          description: Id of the report.
+      responses:
+        '200':
+          description: The report.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportPayload'
+        '404':
+          description: Not Found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /sanctioned-addresses/{address}:
+    get:
+      operationId: CheckSanctionedAddress
+      summary: Check a sanctioned address
+      description: Check whether a blockchain address appears on sanctions lists.
+      tags:
+        - Sanctions
+      parameters:
+        - name: address
+          in: path
+          required: true
+          schema: { type: string }
+          description: The blockchain address to check.
+      responses:
+        '200':
+          description: Array of sanctioned-address records (empty if not sanctioned).
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SanctionedAddressPayload'
+        '404':
+          description: Not Found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: >-
+        HTTP Basic authentication. Credentials are generated from your
+        Chainabuse user profile.
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        reason:
+          type: string
+    SanctionedAddressPayload:
+      type: object
+      properties:
+        label: { type: string }
+        chain: { type: string }
+        address: { type: string }
+    ReportPayload:
+      type: object
+      properties:
+        id: { type: string }
+        trusted: { type: boolean }
+        checked: { type: boolean }
+        isPrivate: { type: boolean }
+        scamCategory: { type: string, nullable: true }
+        createdAt: { type: string, format: date-time }
+        description: { type: string }
+        descriptionMarkdown: { type: string }
+        addresses:
+          type: array
+          items: { type: object }
+        losses:
+          type: array
+          items:
+            type: object
+            properties:
+              amount: { type: number, format: double }
+              asset: { type: string }
+        accusedScammers:
+          type: array
+          items: { type: object }
+        evidences:
+          type: array
+          items: { type: string }
+        ips:
+          type: array
+          items: { type: string }
+    CreateReportsRequest:
+      type: object
+      required:
+        - addresses
+        - description
+        - scamCategory
+      properties:
+        addresses:
+          type: array
+          items: { type: object }
+        description: { type: string }
+        scamCategory: { type: string }
+        tokens:
+          type: array
+          items: { type: object }
+        transactionHashes:
+          type: array
+          items:
+            type: object
+            properties:
+              hash: { type: string }
+              chain: { type: string }
+              label: { type: string }
+        categoryDescription: { type: string }
+        losses:
+          type: array
+          items:
+            type: object
+            properties:
+              asset: { type: string }
+              amount: { type: number }
+        evidences:
+          type: array
+          items:
+            type: object
+            properties:
+              source: { type: string }
+        compromiseIndicators:
+          type: array
+          items:
+            type: object
+            properties:
+              value: { type: string }
+              type: { type: string }
+        accusedScammers:
+          type: array
+          items: { type: object }
+        agreedToBeContactedData:
+          type: object

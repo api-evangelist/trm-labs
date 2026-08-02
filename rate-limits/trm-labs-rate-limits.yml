@@ -1,0 +1,30 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.trmlabs.com/guides/sanctions/introduction
+docs: https://docs.trmlabs.com/guides/chainabuse/getting-started-2-1
+signaling:
+  headers:
+    - X-RateLimit-Limit
+    - X-RateLimit-Remaining
+    - X-RateLimit-Reset
+  retry_after: Retry-After
+  status_code: 429
+rate_limits:
+  - api: TRM Sanctions API
+    tier: default
+    limit_count: 1
+    interval: second
+    daily_cap: 100
+    note: Default limit without an API key.
+  - api: TRM Sanctions API
+    tier: api-key
+    limit_count: 1000
+    interval: second
+    daily_cap: 100000
+    note: Available to holders of a requested API key.
+  - api: Chainabuse Public API
+    tier: default
+    limit_count: 1
+    interval: second
+    daily_cap: 100
+    note: Standard tier. Enhanced limits available via API-key request.

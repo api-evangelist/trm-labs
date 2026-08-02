@@ -1,0 +1,14 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for TRM Sanctions API
+  version: 1.0.0
+extends: openapi/trm-labs-sanctions-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-enriched: '2026-07-21'
+      x-api-category: blockchain-compliance
+  - target: $.paths['/public/v1/sanctions/screening'].post
+    update:
+      x-rate-limit-default: 1/sec, 100/day
+      x-rate-limit-api-key: 1000/sec, 100000/day

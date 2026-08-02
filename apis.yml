@@ -1,8 +1,27 @@
 aid: trm-labs
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/trm-labs.png
 name: TRM Labs
-description: 'TRM Labs is a company surfaced as a portfolio company of bessemer-venture-partners, initialized-capital
-  and added to the API Evangelist network as a stub for enrichment. Sector: crypto. This profile is a
-  lead awaiting the enrichment pipeline.'
+description: >-
+  TRM Labs is a blockchain intelligence company that helps financial
+  institutions, crypto businesses, and government agencies detect and
+  investigate crypto-related fraud, money laundering, and sanctions violations.
+  Its public API surface includes the TRM Sanctions API for screening
+  blockchain addresses against sanctions lists, and the Chainabuse Public API
+  (community-sourced scam reporting) for contributing, retrieving, and looking
+  up reports of malicious addresses, tokens, transactions, and domains. Both
+  APIs use HTTP Basic authentication and are documented at docs.trmlabs.com.
 url: https://raw.githubusercontent.com/api-evangelist/trm-labs/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -13,16 +32,107 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
 - Crypto
-apis: []
+- Blockchain
+- Compliance
+- Sanctions
+- Fraud
+- Anti-Money Laundering
+- Blockchain Intelligence
+apis:
+- aid: trm-labs:trm-labs-reports-api
+  name: TRM Labs Reports API
+  description: Contribute, retrieve, and look up scam reports.
+  humanURL: https://docs.trmlabs.com/guides/sanctions/introduction
+  baseURL: https://api.trmlabs.com
+  tags:
+  - Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/trm-labs-reports-api-openapi.yml
+- aid: trm-labs:trm-labs-sanctions-api
+  name: TRM Labs Sanctions API
+  description: Check whether an address is sanctioned.
+  humanURL: https://docs.trmlabs.com/guides/sanctions/introduction
+  baseURL: https://api.trmlabs.com
+  tags:
+  - Sanctions
+  properties:
+  - type: OpenAPI
+    url: openapi/trm-labs-sanctions-api-openapi.yml
+- aid: trm-labs:trm-labs-sanctions-screening-api
+  name: TRM Labs Sanctions Screening API
+  description: The Sanctions Screening API from TRM Labs — 1 operation(s) for sanctions screening.
+  humanURL: https://docs.trmlabs.com/guides/sanctions/introduction
+  baseURL: https://api.trmlabs.com
+  tags:
+  - Sanctions Screening
+  properties:
+  - type: OpenAPI
+    url: openapi/trm-labs-sanctions-screening-api-openapi.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: AgenticAccess
+  url: agentic-access/trm-labs-agentic-access.yml
+- type: TrustCenter
+  url: security/trm-labs-trust-center.yml
+- type: Compliance
+  url: https://trust.trmlabs.com/
+- type: VulnerabilityDisclosure
+  url: security/trm-labs-vulnerability-disclosure.yml
+- type: Security
+  url: https://www.trmlabs.com/responsible-disclosure
+- type: DomainSecurity
+  url: security/trm-labs-domain-security.yml
+- type: Authentication
+  url: authentication/trm-labs-authentication.yml
+- type: ErrorCatalog
+  url: errors/trm-labs-problem-types.yml
+- type: RateLimits
+  url: rate-limits/trm-labs-rate-limits.yml
+- type: Conventions
+  url: conventions/trm-labs-conventions.yml
+- type: Lifecycle
+  url: lifecycle/trm-labs-lifecycle.yml
+- type: StatusPage
+  url: https://status.trmlabs.com
+- type: Conformance
+  url: conformance/trm-labs-conformance.yml
+- type: DataModel
+  url: data-model/trm-labs-data-model.yml
+- type: MCPServer
+  url: mcp/trm-labs-mcp.yml
+- type: LLMsTxt
+  url: llms/trm-labs-llms.txt
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Documentation
+  url: https://docs.trmlabs.com/
+- type: APIReference
+  url: https://docs.trmlabs.com/guides/chainabuse/welcome-to-chainabuse-api
+- type: GettingStarted
+  url: https://docs.trmlabs.com/guides/chainabuse/getting-started
+- type: Support
+  url: https://docs.trmlabs.com/guides/chainabuse/contact
+- type: Blog
+  url: https://www.trmlabs.com/blog
+- type: GitHubOrganization
+  url: https://github.com/trmlabs
+- type: PrivacyPolicy
+  url: https://www.trmlabs.com/privacy-policy
+- type: SignUp
+  url: https://www.trmlabs.com/products/sanctions
 - type: Website
   url: https://www.trmlabs.com/
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 21
+  pass: local-v1

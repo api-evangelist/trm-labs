@@ -1,0 +1,51 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.trmlabs.com/guides/sanctions/introduction
+format: http-status
+docs: https://docs.trmlabs.com/guides/chainabuse/error-handling
+envelope:
+  description: >-
+    Chainabuse error responses return a JSON object with a `reason` string
+    field. The Sanctions API uses conventional HTTP status codes.
+  field: reason
+problems:
+  - status: 400
+    title: Bad Request
+    detail: Your request is invalid.
+    source_operation: openapi/trm-labs-sanctions-openapi.yml#PublicV1SanctionsScreeningPost
+  - status: 401
+    title: Unauthorized
+    detail: Your API key is wrong.
+    source_operation: openapi/trm-labs-sanctions-openapi.yml#PublicV1SanctionsScreeningPost
+  - status: 403
+    title: Forbidden
+    detail: The request was authenticated but not permitted.
+    source_operation: openapi/trm-labs-chainabuse-openapi.yml#CreateReports
+  - status: 404
+    title: Not Found
+    detail: The specified resource could not be found.
+    source_operation: openapi/trm-labs-chainabuse-openapi.yml#Report
+  - status: 405
+    title: Method Not Allowed
+    detail: You tried to access an object with an invalid method.
+    source_operation: openapi/trm-labs-sanctions-openapi.yml#PublicV1SanctionsScreeningPost
+  - status: 406
+    title: Not Acceptable
+    detail: You requested a format that isn't json.
+    source_operation: openapi/trm-labs-sanctions-openapi.yml#PublicV1SanctionsScreeningPost
+  - status: 422
+    title: Unprocessable Entity
+    detail: The report payload failed validation.
+    source_operation: openapi/trm-labs-chainabuse-openapi.yml#CreateReports
+  - status: 429
+    title: Too Many Requests
+    detail: You have exceeded your rate limit. Inspect the Retry-After header.
+    source_operation: openapi/trm-labs-sanctions-openapi.yml#PublicV1SanctionsScreeningPost
+  - status: 500
+    title: Internal Server Error
+    detail: We had a problem with our server.
+    source_operation: openapi/trm-labs-sanctions-openapi.yml#PublicV1SanctionsScreeningPost
+  - status: 503
+    title: Service Unavailable
+    detail: We're temporarily offline for maintenance.
+    source_operation: openapi/trm-labs-sanctions-openapi.yml#PublicV1SanctionsScreeningPost

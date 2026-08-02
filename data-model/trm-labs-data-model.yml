@@ -1,0 +1,40 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/trm-labs-chainabuse-openapi.yml, openapi/trm-labs-sanctions-openapi.yml
+entities:
+  - name: Report
+    api: Chainabuse Public API
+    id_field: id
+    fields: [id, trusted, checked, isPrivate, scamCategory, createdAt, description, descriptionMarkdown, addresses, losses, accusedScammers, evidences, ips]
+    relationships:
+      - type: has_many
+        target: ReportAddress
+        via: addresses
+      - type: has_many
+        target: Loss
+        via: losses
+      - type: has_many
+        target: AccusedScammer
+        via: accusedScammers
+  - name: ReportAddress
+    api: Chainabuse Public API
+    fields: [address, chain]
+  - name: Loss
+    api: Chainabuse Public API
+    fields: [amount, asset]
+  - name: AccusedScammer
+    api: Chainabuse Public API
+    fields: []
+  - name: SanctionedAddress
+    api: Chainabuse Public API
+    id_field: address
+    fields: [label, chain, address]
+  - name: ScreeningResult
+    api: TRM Sanctions API
+    id_field: address
+    fields: [address, isSanctioned]
+notes: >-
+  Reports are the central Chainabuse entity, aggregating addresses, losses, and
+  accused scammers. Sanctions screening is a stateless lookup keyed by address
+  across both the Chainabuse sanctioned-address endpoint and the TRM Sanctions
+  screening endpoint.

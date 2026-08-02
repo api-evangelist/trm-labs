@@ -1,0 +1,14 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Chainabuse Public API
+  version: 1.0.0
+extends: openapi/trm-labs-chainabuse-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-enriched: '2026-07-21'
+      x-api-category: blockchain-compliance
+  - target: $.paths['/reports'].get
+    update:
+      x-pagination-style: page-number
+      x-rate-limit-default: 1/sec, 100/day

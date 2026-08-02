@@ -1,0 +1,31 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.trmlabs.com/guides/chainabuse/getting-started
+docs: https://docs.trmlabs.com/guides/chainabuse/getting-started
+summary:
+  types: [http]
+  http_schemes: [basic]
+  oauth2_flows: []
+  api_key_in: []
+schemes:
+  - name: basicAuth
+    type: http
+    scheme: basic
+    description: >-
+      TRM Sanctions API uses HTTP Basic authentication with the API key supplied
+      as both username and password. Request an API key at
+      https://www.trmlabs.com/products/sanctions.
+    sources: [openapi/trm-labs-sanctions-openapi.yml]
+    api: TRM Sanctions API
+  - name: basicAuth
+    type: http
+    scheme: basic
+    description: >-
+      Chainabuse Public API uses HTTP Basic authentication. Credentials are
+      generated from your Chainabuse user profile and passed in the
+      Authorization header as base64-encoded credentials.
+    sources: [openapi/trm-labs-chainabuse-openapi.yml]
+    api: Chainabuse Public API
+notes: >-
+  Both public TRM Labs APIs authenticate with HTTP Basic. There is no documented
+  OAuth2/OIDC surface, so no scopes artifact applies.

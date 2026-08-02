@@ -1,0 +1,48 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.trmlabs.com/guides/chainabuse/welcome-to-chainabuse-api
+docs: https://docs.trmlabs.com/guides/chainabuse/getting-started
+authentication:
+  style: http-basic
+  detail: >-
+    HTTP Basic authentication for both APIs. Sanctions API uses the API key as
+    username and password; Chainabuse uses credentials generated from the user
+    profile.
+  ref: authentication/trm-labs-authentication.yml
+idempotency:
+  supported: false
+  note: >-
+    No idempotency-key header is documented. Sanctions screening and report
+    reads are safe/repeatable GET/POST-screen operations; batch report creation
+    (POST /reports/batch) is not documented as idempotent.
+pagination:
+  style: page-number
+  params:
+    - page
+    - perPage
+  response_fields:
+    - reports
+    - count
+  detail: >-
+    Chainabuse GET /reports uses page-number pagination (page default 1, perPage
+    default 50, max 50) with a total `count` in the response. Ordering via
+    orderByField (CREATED_AT|SUBMITTED_BY) and orderByDirection (ASC|DESC).
+rate_limiting:
+  headers:
+    - X-RateLimit-Limit
+    - X-RateLimit-Remaining
+    - X-RateLimit-Reset
+  retry_after: Retry-After
+  status_code: 429
+  ref: rate-limits/trm-labs-rate-limits.yml
+error_envelope:
+  format: json
+  field: reason
+  ref: errors/trm-labs-problem-types.yml
+versioning:
+  style: uri-path
+  detail: >-
+    Version carried in the URL path. Chainabuse serves /v0 (API version 1.2);
+    the TRM Sanctions API serves /public/v1 (API version 1).
+  ref: lifecycle/trm-labs-lifecycle.yml
+content_type: application/json

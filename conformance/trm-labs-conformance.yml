@@ -1,0 +1,30 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/trm-labs-sanctions-openapi.yml, openapi/trm-labs-chainabuse-openapi.yml, security/trm-labs-trust-center.yml
+standards:
+  - id: oauth2
+    conforms: false
+    evidence: No oauth2 securityScheme; both APIs use HTTP Basic.
+  - id: oidc
+    conforms: false
+  - id: http-basic-auth
+    conforms: true
+    evidence: securitySchemes type http scheme basic in both specs.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors use a plain JSON {reason} envelope, not application/problem+json.
+  - id: pagination
+    conforms: true
+    evidence: Chainabuse GET /reports uses page/perPage with a total count.
+  - id: idempotency
+    conforms: false
+    evidence: No idempotency-key header documented.
+  - id: soc2
+    conforms: true
+    evidence: SOC 2 listed on trust.trmlabs.com.
+  - id: iso-27001
+    conforms: true
+    evidence: ISO/IEC 27001 listed on trust.trmlabs.com.
+  - id: fedramp
+    conforms: true
+    evidence: FedRAMP listed on trust.trmlabs.com.
