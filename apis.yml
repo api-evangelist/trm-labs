@@ -79,6 +79,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/trm-labs-chainabuse-overlay.yaml
 - type: AgenticAccess
   url: agentic-access/trm-labs-agentic-access.yml
 - type: TrustCenter
