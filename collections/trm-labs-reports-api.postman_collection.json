@@ -1,0 +1,858 @@
+{
+  "item": [
+    {
+      "id": "2af9bb41-39d1-4aa0-9ef9-01be29b4d817",
+      "name": "Reports",
+      "description": {
+        "content": "Contribute, retrieve, and look up scam reports.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "793599b8-80a1-4c71-aab5-821396681a33",
+          "name": "Get reports",
+          "request": {
+            "name": "Get reports",
+            "description": {
+              "content": "Continuously check whether specific blockchain addresses (contracts or wallets), token IDs, or URLs have been reported as malicious. Supports filtering, pagination, and ordering.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "reports"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "Crypto address to screen."
+                },
+                {
+                  "disabled": false,
+                  "key": "domain",
+                  "value": "<string>",
+                  "description": "URL/domain to screen."
+                },
+                {
+                  "disabled": false,
+                  "key": "chain",
+                  "value": "<string>",
+                  "description": "ChainKind enum (BTC, ETH, TRON, SOL, ...)."
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "ScamCategoryKind enum (RUG_PULL, PHISHING, ...)."
+                },
+                {
+                  "disabled": false,
+                  "key": "since",
+                  "value": "<dateTime>",
+                  "description": "Start date filter."
+                },
+                {
+                  "disabled": false,
+                  "key": "before",
+                  "value": "<dateTime>",
+                  "description": "Threshold date filter."
+                },
+                {
+                  "disabled": false,
+                  "key": "checked",
+                  "value": "<boolean>",
+                  "description": "Only reports verified by moderators."
+                },
+                {
+                  "disabled": false,
+                  "key": "trusted",
+                  "value": "<boolean>",
+                  "description": "Only reports from trusted contributors."
+                },
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "ISO 3166-1 alpha-2 country code."
+                },
+                {
+                  "disabled": false,
+                  "key": "minLossAmount",
+                  "value": "<number>",
+                  "description": "Minimum loss amount (USD)."
+                },
+                {
+                  "disabled": false,
+                  "key": "scammerIoc",
+                  "value": "<string>",
+                  "description": "Indicator-of-compromise filter."
+                },
+                {
+                  "disabled": false,
+                  "key": "username",
+                  "value": "<string>",
+                  "description": "Contributor username."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number."
+                },
+                {
+                  "disabled": false,
+                  "key": "perPage",
+                  "value": "50",
+                  "description": "Reports per page (max 50)."
+                },
+                {
+                  "disabled": false,
+                  "key": "orderByField",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "orderByDirection",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "includePrivate",
+                  "value": "false",
+                  "description": "Include private reports (TRM_INTERNAL only)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "30884902-7740-49f5-84c8-852ede9a129b",
+              "name": "A page of reports.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "domain",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "chain",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "since",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "before",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "checked",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "trusted",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "minLossAmount",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "scammerIoc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "username",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "perPage",
+                      "value": "50"
+                    },
+                    {
+                      "key": "orderByField",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "orderByDirection",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includePrivate",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"reports\": [\n    {\n      \"id\": \"string\",\n      \"trusted\": true,\n      \"checked\": false,\n      \"isPrivate\": false,\n      \"scamCategory\": \"string\",\n      \"createdAt\": \"1994-01-19T01:30:50.557Z\",\n      \"description\": \"string\",\n      \"descriptionMarkdown\": \"string\",\n      \"losses\": [\n        {\n          \"amount\": 9381.274284668001,\n          \"asset\": \"string\"\n        },\n        {\n          \"amount\": 9551.366998081901,\n          \"asset\": \"string\"\n        }\n      ],\n      \"evidences\": [\n        \"string\",\n        \"string\"\n      ],\n      \"ips\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"trusted\": false,\n      \"checked\": false,\n      \"isPrivate\": false,\n      \"scamCategory\": \"string\",\n      \"createdAt\": \"2011-03-18T15:02:39.461Z\",\n      \"description\": \"string\",\n      \"descriptionMarkdown\": \"string\",\n      \"losses\": [\n        {\n          \"amount\": 8999.529540846297,\n          \"asset\": \"string\"\n        },\n        {\n          \"amount\": 5248.31307309264,\n          \"asset\": \"string\"\n        }\n      ],\n      \"evidences\": [\n        \"string\",\n        \"string\"\n      ],\n      \"ips\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"count\": 8863.02327696815\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9953f426-90f3-4cc7-a684-0e67374f9877",
+              "name": "Unauthorized -- Your API key is wrong.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "domain",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "chain",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "since",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "before",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "checked",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "trusted",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "minLossAmount",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "scammerIoc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "username",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "perPage",
+                      "value": "50"
+                    },
+                    {
+                      "key": "orderByField",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "orderByDirection",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includePrivate",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "48298412-7592-4e39-acfb-d2a7ff2477ed",
+              "name": "Too Many Requests -- You have exceeded your rate limit.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "domain",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "chain",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "since",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "before",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "checked",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "trusted",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "minLossAmount",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "scammerIoc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "username",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "perPage",
+                      "value": "50"
+                    },
+                    {
+                      "key": "orderByField",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "orderByDirection",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includePrivate",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "901a6d1b-46c1-4279-8996-45404f4536be",
+          "name": "Contribute reports",
+          "request": {
+            "name": "Contribute reports",
+            "description": {
+              "content": "Create reports in batch to report addresses and/or domains that are malicious.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "reports"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"addresses\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"description\": \"<string>\",\n  \"scamCategory\": \"<string>\",\n  \"tokens\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"transactionHashes\": [\n    {\n      \"hash\": \"<string>\",\n      \"chain\": \"<string>\",\n      \"label\": \"<string>\"\n    },\n    {\n      \"hash\": \"<string>\",\n      \"chain\": \"<string>\",\n      \"label\": \"<string>\"\n    }\n  ],\n  \"categoryDescription\": \"<string>\",\n  \"losses\": [\n    {\n      \"asset\": \"<string>\",\n      \"amount\": \"<number>\"\n    },\n    {\n      \"asset\": \"<string>\",\n      \"amount\": \"<number>\"\n    }\n  ],\n  \"evidences\": [\n    {\n      \"source\": \"<string>\"\n    },\n    {\n      \"source\": \"<string>\"\n    }\n  ],\n  \"compromiseIndicators\": [\n    {\n      \"value\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"value\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"accusedScammers\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"agreedToBeContactedData\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1cf12bea-13ae-4157-8695-28f779ceae76",
+              "name": "Batch create result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"addresses\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"description\": \"<string>\",\n  \"scamCategory\": \"<string>\",\n  \"tokens\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"transactionHashes\": [\n    {\n      \"hash\": \"<string>\",\n      \"chain\": \"<string>\",\n      \"label\": \"<string>\"\n    },\n    {\n      \"hash\": \"<string>\",\n      \"chain\": \"<string>\",\n      \"label\": \"<string>\"\n    }\n  ],\n  \"categoryDescription\": \"<string>\",\n  \"losses\": [\n    {\n      \"asset\": \"<string>\",\n      \"amount\": \"<number>\"\n    },\n    {\n      \"asset\": \"<string>\",\n      \"amount\": \"<number>\"\n    }\n  ],\n  \"evidences\": [\n    {\n      \"source\": \"<string>\"\n    },\n    {\n      \"source\": \"<string>\"\n    }\n  ],\n  \"compromiseIndicators\": [\n    {\n      \"value\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"value\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"accusedScammers\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"agreedToBeContactedData\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"createdReports\": [\n    {\n      \"id\": \"string\"\n    },\n    {\n      \"id\": \"string\"\n    }\n  ],\n  \"failedReports\": [\n    {\n      \"error\": \"string\",\n      \"reportIndex\": 8508.920174828938\n    },\n    {\n      \"error\": \"string\",\n      \"reportIndex\": 3998.3473757001207\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4cf2a2b3-2eed-47f0-87bf-cc9ccad582b0",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"addresses\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"description\": \"<string>\",\n  \"scamCategory\": \"<string>\",\n  \"tokens\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"transactionHashes\": [\n    {\n      \"hash\": \"<string>\",\n      \"chain\": \"<string>\",\n      \"label\": \"<string>\"\n    },\n    {\n      \"hash\": \"<string>\",\n      \"chain\": \"<string>\",\n      \"label\": \"<string>\"\n    }\n  ],\n  \"categoryDescription\": \"<string>\",\n  \"losses\": [\n    {\n      \"asset\": \"<string>\",\n      \"amount\": \"<number>\"\n    },\n    {\n      \"asset\": \"<string>\",\n      \"amount\": \"<number>\"\n    }\n  ],\n  \"evidences\": [\n    {\n      \"source\": \"<string>\"\n    },\n    {\n      \"source\": \"<string>\"\n    }\n  ],\n  \"compromiseIndicators\": [\n    {\n      \"value\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"value\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"accusedScammers\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"agreedToBeContactedData\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"reason\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b3c11b06-7c89-4167-88f1-325e74afa14d",
+              "name": "Unprocessable Entity.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"addresses\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"description\": \"<string>\",\n  \"scamCategory\": \"<string>\",\n  \"tokens\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"transactionHashes\": [\n    {\n      \"hash\": \"<string>\",\n      \"chain\": \"<string>\",\n      \"label\": \"<string>\"\n    },\n    {\n      \"hash\": \"<string>\",\n      \"chain\": \"<string>\",\n      \"label\": \"<string>\"\n    }\n  ],\n  \"categoryDescription\": \"<string>\",\n  \"losses\": [\n    {\n      \"asset\": \"<string>\",\n      \"amount\": \"<number>\"\n    },\n    {\n      \"asset\": \"<string>\",\n      \"amount\": \"<number>\"\n    }\n  ],\n  \"evidences\": [\n    {\n      \"source\": \"<string>\"\n    },\n    {\n      \"source\": \"<string>\"\n    }\n  ],\n  \"compromiseIndicators\": [\n    {\n      \"value\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"value\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"accusedScammers\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"agreedToBeContactedData\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"reason\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "83b420b3-dd6d-485a-a59f-1a712065a888",
+          "name": "Get single report",
+          "request": {
+            "name": "Get single report",
+            "description": {
+              "content": "Access a specific scam report using its ID number.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "reports",
+                ":reportId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "reportId",
+                  "description": "(Required) Id of the report."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "24c55a6b-6e99-4a52-9c59-a9d566c8ca8a",
+              "name": "The report.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reports",
+                    ":reportId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reportId",
+                      "description": "(Required) Id of the report."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"trusted\": true,\n  \"checked\": true,\n  \"isPrivate\": true,\n  \"scamCategory\": \"string\",\n  \"createdAt\": \"2009-01-19T23:56:55.921Z\",\n  \"description\": \"string\",\n  \"descriptionMarkdown\": \"string\",\n  \"losses\": [\n    {\n      \"amount\": 8435.615169341298,\n      \"asset\": \"string\"\n    },\n    {\n      \"amount\": 5274.722253343361,\n      \"asset\": \"string\"\n    }\n  ],\n  \"evidences\": [\n    \"string\",\n    \"string\"\n  ],\n  \"ips\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "740de835-59d5-4209-83d2-5a09afebe924",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reports",
+                    ":reportId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reportId",
+                      "description": "(Required) Id of the report."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"reason\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.chainabuse.com/v0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3a6d4b73-a320-41c2-a813-65fcdde9546d",
+    "name": "Chainabuse Public Reports API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Chainabuse Public API lets partners contribute, retrieve, and look up community scam reports for blockchain addresses, tokens, transactions, and domains, and check whether an address appears on sanctions lists. Chainabuse is operated by TRM Labs. Documented at https://docs.trmlabs.com/guides/chainabuse/welcome-to-chainabuse-api.\n\nContact Support:\n Name: Chainabuse\n Email: hello@chainabuse.com",
+      "type": "text/plain"
+    }
+  }
+}

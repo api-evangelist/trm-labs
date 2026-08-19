@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chainabuse Public Reports Sanctions Screening API",
+    "version": "1.2"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sanctions Screening",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Submit one or more addresses to be screened",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.chainabuse.com/v0/public/v1/sanctions/screening",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Returns whether each address provided has sanctions exposure. By default the API is limited to 1 req/sec and a maximum of 100 req/day. API-key holders receive higher limits."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,172 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chainabuse Public Reports API",
+    "version": "1.2"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.chainabuse.com/v0/reports",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "query",
+                "description": "Crypto address to screen."
+              },
+              {
+                "name": "domain",
+                "value": "",
+                "type": "query",
+                "description": "URL/domain to screen."
+              },
+              {
+                "name": "chain",
+                "value": "",
+                "type": "query",
+                "description": "ChainKind enum (BTC, ETH, TRON, SOL, ...)."
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "ScamCategoryKind enum (RUG_PULL, PHISHING, ...)."
+              },
+              {
+                "name": "since",
+                "value": "",
+                "type": "query",
+                "description": "Start date filter."
+              },
+              {
+                "name": "before",
+                "value": "",
+                "type": "query",
+                "description": "Threshold date filter."
+              },
+              {
+                "name": "checked",
+                "value": "",
+                "type": "query",
+                "description": "Only reports verified by moderators."
+              },
+              {
+                "name": "trusted",
+                "value": "",
+                "type": "query",
+                "description": "Only reports from trusted contributors."
+              },
+              {
+                "name": "country",
+                "value": "",
+                "type": "query",
+                "description": "ISO 3166-1 alpha-2 country code."
+              },
+              {
+                "name": "minLossAmount",
+                "value": "",
+                "type": "query",
+                "description": "Minimum loss amount (USD)."
+              },
+              {
+                "name": "scammerIoc",
+                "value": "",
+                "type": "query",
+                "description": "Indicator-of-compromise filter."
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "query",
+                "description": "Contributor username."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number."
+              },
+              {
+                "name": "perPage",
+                "value": "",
+                "type": "query",
+                "description": "Reports per page (max 50)."
+              },
+              {
+                "name": "orderByField",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "orderByDirection",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "includePrivate",
+                "value": "",
+                "type": "query",
+                "description": "Include private reports (TRM_INTERNAL only)."
+              }
+            ]
+          },
+          "docs": "Continuously check whether specific blockchain addresses (contracts or wallets), token IDs, or URLs have been reported as malicious. Supports filtering, pagination, and ordering."
+        },
+        {
+          "info": {
+            "name": "Contribute reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.chainabuse.com/v0/reports",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create reports in batch to report addresses and/or domains that are malicious."
+        },
+        {
+          "info": {
+            "name": "Get single report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.chainabuse.com/v0/reports/:reportId",
+            "params": [
+              {
+                "name": "reportId",
+                "value": "",
+                "type": "path",
+                "description": "Id of the report."
+              }
+            ]
+          },
+          "docs": "Access a specific scam report using its ID number."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

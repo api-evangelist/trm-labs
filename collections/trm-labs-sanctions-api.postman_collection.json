@@ -1,0 +1,193 @@
+{
+  "item": [
+    {
+      "id": "173b191e-715b-47ed-8942-e494528689c1",
+      "name": "Sanctions",
+      "description": {
+        "content": "Check whether an address is sanctioned.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "da21c48e-b0eb-441e-9311-d20460ed7fbf",
+          "name": "Check a sanctioned address",
+          "request": {
+            "name": "Check a sanctioned address",
+            "description": {
+              "content": "Check whether a blockchain address appears on sanctions lists.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sanctioned-addresses",
+                ":address"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "address",
+                  "description": "(Required) The blockchain address to check."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ffc0afba-4bf1-41df-ac21-04d04f04eb19",
+              "name": "Array of sanctioned-address records (empty if not sanctioned).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sanctioned-addresses",
+                    ":address"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) The blockchain address to check."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"label\": \"string\",\n    \"chain\": \"string\",\n    \"address\": \"string\"\n  },\n  {\n    \"label\": \"string\",\n    \"chain\": \"string\",\n    \"address\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1e533633-f622-4960-9940-511fd3d24f49",
+              "name": "Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sanctioned-addresses",
+                    ":address"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) The blockchain address to check."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"reason\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.chainabuse.com/v0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2a89d7c5-aa0a-425b-9678-5423bb161645",
+    "name": "Chainabuse Public Reports Sanctions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Chainabuse Public API lets partners contribute, retrieve, and look up community scam reports for blockchain addresses, tokens, transactions, and domains, and check whether an address appears on sanctions lists. Chainabuse is operated by TRM Labs. Documented at https://docs.trmlabs.com/guides/chainabuse/welcome-to-chainabuse-api.\n\nContact Support:\n Name: Chainabuse\n Email: hello@chainabuse.com",
+      "type": "text/plain"
+    }
+  }
+}

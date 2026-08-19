@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chainabuse Public Reports Sanctions API",
+    "version": "1.2"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sanctions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Check a sanctioned address",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.chainabuse.com/v0/sanctioned-addresses/:address",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path",
+                "description": "The blockchain address to check."
+              }
+            ]
+          },
+          "docs": "Check whether a blockchain address appears on sanctions lists."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

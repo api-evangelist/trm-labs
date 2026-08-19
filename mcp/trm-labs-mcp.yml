@@ -5,22 +5,27 @@ source: openapi/trm-labs-sanctions-openapi.yml, openapi/trm-labs-chainabuse-open
 server:
   name: trm-labs
   transport: stdio
-  note: >-
-    No official hosted/remote MCP server found for TRM Labs. This is a candidate
-    tool list derived one-per-operation from the published OpenAPI specs.
+  note: No official hosted/remote MCP server found for TRM Labs. This is a candidate tool list derived
+    one-per-operation from the published OpenAPI specs.
 tools:
-  - name: screen_addresses
-    description: Screen one or more blockchain addresses for sanctions exposure.
-    source_operation: openapi/trm-labs-sanctions-openapi.yml#PublicV1SanctionsScreeningPost
-  - name: get_reports
-    description: Retrieve Chainabuse scam reports filtered by address, domain, chain, category, and more.
-    source_operation: openapi/trm-labs-chainabuse-openapi.yml#GetReports
-  - name: create_reports
-    description: Contribute scam reports in batch to Chainabuse.
-    source_operation: openapi/trm-labs-chainabuse-openapi.yml#CreateReports
-  - name: get_report
-    description: Get a single Chainabuse scam report by its ID.
-    source_operation: openapi/trm-labs-chainabuse-openapi.yml#Report
-  - name: check_sanctioned_address
-    description: Check whether a blockchain address appears on sanctions lists.
-    source_operation: openapi/trm-labs-chainabuse-openapi.yml#CheckSanctionedAddress
+- name: screen_addresses
+  description: Screen one or more blockchain addresses for sanctions exposure.
+  source_operation: openapi/trm-labs-sanctions-openapi.yml#PublicV1SanctionsScreeningPost
+- name: get_reports
+  description: Retrieve Chainabuse scam reports filtered by address, domain, chain, category, and more.
+  source_operation: openapi/trm-labs-chainabuse-openapi.yml#GetReports
+- name: create_reports
+  description: Contribute scam reports in batch to Chainabuse.
+  source_operation: openapi/trm-labs-chainabuse-openapi.yml#CreateReports
+- name: get_report
+  description: Get a single Chainabuse scam report by its ID.
+  source_operation: openapi/trm-labs-chainabuse-openapi.yml#Report
+- name: check_sanctioned_address
+  description: Check whether a blockchain address appears on sanctions lists.
+  source_operation: openapi/trm-labs-chainabuse-openapi.yml#CheckSanctionedAddress
+deployment:
+  mode: none
+  verified: derived
+  tools: 5
+  checked: '2026-08-12'
+  source: catalog MCP census
