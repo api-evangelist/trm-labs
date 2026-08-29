@@ -1,15 +1,14 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Chainabuse Public Reports Sanctions Screening API
-  version: '1.2'
-  description: The Chainabuse Public API lets partners contribute, retrieve, and look up community scam reports for blockchain addresses, tokens, transactions, and domains, and check whether an address appears on sanctions lists. Chainabuse is operated by TRM Labs. Documented at https://docs.trmlabs.com/guides/chainabuse/welcome-to-chainabuse-api.
+  title: TRM Sanctions Sanctions Screening API
+  version: '1'
+  description: Screen one or more blockchain addresses against sanctions lists. Submit addresses and receive whether each address has sanctions exposure. Published by TRM Labs at https://docs.trmlabs.com/guides/sanctions/introduction.
   contact:
-    name: Chainabuse
-    email: hello@chainabuse.com
-    url: https://www.chainabuse.com/
+    name: TRM Labs
+    url: https://www.trmlabs.com/products/sanctions
   termsOfService: https://www.trmlabs.com/terms-of-service
 servers:
-- url: https://api.chainabuse.com/v0
+- url: https://api.trmlabs.com
   description: Production
 security:
 - basicAuth: []
@@ -60,14 +59,6 @@ paths:
           description: Service Unavailable -- We're temporarily offline for maintenance.
 components:
   schemas:
-    ScreeningRequestItem:
-      type: object
-      required:
-      - address
-      properties:
-        address:
-          type: string
-          description: The blockchain address to screen.
     ScreeningResultItem:
       type: object
       properties:
@@ -77,8 +68,16 @@ components:
         isSanctioned:
           type: boolean
           description: Whether the address has sanctions exposure.
+    ScreeningRequestItem:
+      type: object
+      required:
+      - address
+      properties:
+        address:
+          type: string
+          description: The blockchain address to screen.
   securitySchemes:
     basicAuth:
       type: http
       scheme: basic
-      description: HTTP Basic authentication. Credentials are generated from your Chainabuse user profile.
+      description: HTTP Basic authentication with the API key supplied as both username and password.

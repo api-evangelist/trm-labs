@@ -1,9 +1,8 @@
 {
   "provider": "trm-labs",
   "sources": [
-    "trm-labs-reports-api-openapi.yml",
-    "trm-labs-sanctions-api-openapi.yml",
-    "trm-labs-sanctions-screening-api-openapi.yml"
+    "_original/trm-labs-chainabuse-openapi.yml",
+    "_original/trm-labs-sanctions-openapi.yml"
   ],
   "outputs": [
     "trm-labs-reports-api-openapi.yml",
@@ -13,6 +12,15 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "trm-labs-chainabuse-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "trm-labs-sanctions-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "trm-labs-sanctions-openapi.yml: declared missing tag: Sanctions Screening"
+  ],
+  "skipped": [
+    "trm-labs-reports-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trm-labs-sanctions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trm-labs-sanctions-screening-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

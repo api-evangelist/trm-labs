@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Chainabuse Public Reports API
   version: '1.2'
@@ -237,53 +237,6 @@ components:
       properties:
         reason:
           type: string
-    ReportPayload:
-      type: object
-      properties:
-        id:
-          type: string
-        trusted:
-          type: boolean
-        checked:
-          type: boolean
-        isPrivate:
-          type: boolean
-        scamCategory:
-          type: string
-          nullable: true
-        createdAt:
-          type: string
-          format: date-time
-        description:
-          type: string
-        descriptionMarkdown:
-          type: string
-        addresses:
-          type: array
-          items:
-            type: object
-        losses:
-          type: array
-          items:
-            type: object
-            properties:
-              amount:
-                type: number
-                format: double
-              asset:
-                type: string
-        accusedScammers:
-          type: array
-          items:
-            type: object
-        evidences:
-          type: array
-          items:
-            type: string
-        ips:
-          type: array
-          items:
-            type: string
     CreateReportsRequest:
       type: object
       required:
@@ -347,6 +300,53 @@ components:
             type: object
         agreedToBeContactedData:
           type: object
+    ReportPayload:
+      type: object
+      properties:
+        id:
+          type: string
+        trusted:
+          type: boolean
+        checked:
+          type: boolean
+        isPrivate:
+          type: boolean
+        scamCategory:
+          type: string
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+        description:
+          type: string
+        descriptionMarkdown:
+          type: string
+        addresses:
+          type: array
+          items:
+            type: object
+        losses:
+          type: array
+          items:
+            type: object
+            properties:
+              amount:
+                type: number
+                format: double
+              asset:
+                type: string
+        accusedScammers:
+          type: array
+          items:
+            type: object
+        evidences:
+          type: array
+          items:
+            type: string
+        ips:
+          type: array
+          items:
+            type: string
   securitySchemes:
     basicAuth:
       type: http
