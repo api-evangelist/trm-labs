@@ -13,15 +13,17 @@ deliveryModel:
   method: derived
 accessModel:
   pricing: unknown
-  onboarding: self-serve
+  onboarding: unknown
   trial: false
   try_now: false
   public: false
-  label: Self-serve signup
-  confidence: medium
+  label: Unknown
+  confidence: low
   source:
   - authentication
-  generated: '2026-07-22'
+  - rate-limits
+  - security
+  generated: '2026-09-03'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/trm-labs.png
 name: TRM Labs
@@ -121,8 +123,9 @@ common:
   url: conformance/trm-labs-conformance.yml
 - type: DataModel
   url: data-model/trm-labs-data-model.yml
-- type: MCPServer
+- type: X-MCPServerCandidate
   url: mcp/trm-labs-mcp.yml
+  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
 - type: LLMsTxt
   url: llms/trm-labs-llms.txt
 - type: AgentSkill
