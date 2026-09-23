@@ -1,0 +1,31 @@
+# Front Door AI Index — trm-labs — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: trm-labs
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.trmlabs.com
+  final_host: www.trmlabs.com
+  ownership: own
+  owner: trm-labs
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 31
+  host_score: 31
+  density: 16.7
+  words: 1856
+  tiers:
+    agentic: 2
+    core: 27
+    model: 2
+  ambiguous: 20
+  top_terms:
+    AI: 26
+    intelligence: 13
+    agent: 7
+    AI agent: 2
+    Anthropic: 1
+    OpenAI: 1
+    generative ai: 1

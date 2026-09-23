@@ -232,11 +232,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        reason:
-          type: string
     CreateReportsRequest:
       type: object
       required:
@@ -300,6 +295,11 @@ components:
             type: object
         agreedToBeContactedData:
           type: object
+    ErrorResponse:
+      type: object
+      properties:
+        reason:
+          type: string
     ReportPayload:
       type: object
       properties:

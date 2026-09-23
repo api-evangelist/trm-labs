@@ -16,7 +16,8 @@
     "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "trm-labs-chainabuse-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "trm-labs-sanctions-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "trm-labs-sanctions-openapi.yml: declared missing tag: Sanctions Screening"
+    "trm-labs-sanctions-openapi.yml: declared missing tag: Sanctions Screening",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "trm-labs-reports-api-openapi.yml: previously refined output, superseded by openapi/_original/",
