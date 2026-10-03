@@ -59,6 +59,14 @@ paths:
           description: Service Unavailable -- We're temporarily offline for maintenance.
 components:
   schemas:
+    ScreeningRequestItem:
+      type: object
+      required:
+      - address
+      properties:
+        address:
+          type: string
+          description: The blockchain address to screen.
     ScreeningResultItem:
       type: object
       properties:
@@ -68,14 +76,6 @@ components:
         isSanctioned:
           type: boolean
           description: Whether the address has sanctions exposure.
-    ScreeningRequestItem:
-      type: object
-      required:
-      - address
-      properties:
-        address:
-          type: string
-          description: The blockchain address to screen.
   securitySchemes:
     basicAuth:
       type: http
