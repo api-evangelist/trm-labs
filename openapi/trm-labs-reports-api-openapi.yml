@@ -232,11 +232,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        reason:
-          type: string
     CreateReportsRequest:
       type: object
       required:
@@ -347,6 +342,11 @@ components:
           type: array
           items:
             type: string
+    ErrorResponse:
+      type: object
+      properties:
+        reason:
+          type: string
   securitySchemes:
     basicAuth:
       type: http

@@ -48,11 +48,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        reason:
-          type: string
     SanctionedAddressPayload:
       type: object
       properties:
@@ -61,6 +56,11 @@ components:
         chain:
           type: string
         address:
+          type: string
+    ErrorResponse:
+      type: object
+      properties:
+        reason:
           type: string
   securitySchemes:
     basicAuth:
