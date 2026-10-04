@@ -1,0 +1,26 @@
+slug: trm-labs
+provider: TRM Labs
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Sanctions Screening
+  spec_file: trm-labs-sanctions-screening-api-openapi.yml
+  capability_id: BC-130.10
+  capability_id_l1: BC-130
+  capability_name: Regulatory Compliance Management
+  confidence: 0.75
+  evidence: Screen one or more blockchain addresses against sanctions lists. Submit addresses and receive
+    whether each address has sanctions exposure.
+  reason: Batch sanctions screening with pass/fail exposure results is the operational core of sanctions
+    regulatory compliance; the description explicitly frames it as screening against sanctions lists.
+    No other candidate capability fits sanctions obligations.
